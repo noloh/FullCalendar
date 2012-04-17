@@ -62,8 +62,8 @@ class FullCalendar extends Panel
 	private function SetDefaults()
 	{
 		$this->Config = array();
-		$this->Config['dayClick'] = ClientScript::Raw("function(date, allDay){_NSet('$this', '_NEventData', '{\"date\" : \"' + date + '\", \"allDay\" : ' + allDay + '}'); if(_N('$this').DayClick){_N('$this').DayClick()}}");
-		$this->Config['eventClick'] = ClientScript::Raw("function(calEvent){_NSet('$this', '_NEventData', JSON.stringify(calEvent, function(k,v){return k == 'source'?null:v})); if(_N('$this').EventClick){_N('$this').EventClick()}}");
+		$this->Config['dayClick'] = ClientScript::Raw("function(date, allDay){_NSet('$this', '_NEventData', '{\"date\" : \"' + date + '\", \"allDay\" : ' + allDay + ', \"rand\" : ' + Math.random() + '}'); if(_N('$this').DayClick){_N('$this').DayClick()}}");
+		$this->Config['eventClick'] = ClientScript::Raw("function(calEvent){_NSet('$this', '_NEventData', JSON.stringify(calEvent, function(k,v){return k == 'source'?Math.random():v})); if(_N('$this').EventClick){_N('$this').EventClick()}}");
 		$this->SetHeaderTemplate();
 	}
 	/**
